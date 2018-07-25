@@ -72,4 +72,12 @@ public class Utilities {
             	return false;
             }
 		}
+		
+		public static boolean isNonNegative(String number) {
+			Pattern pattern = Pattern.compile("^(\\d*\\.)?\\d+$");
+			if(pattern.matcher(number).find()) {
+				return true;
+			}
+			return false;
+		}
 }

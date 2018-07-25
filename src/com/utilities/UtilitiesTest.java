@@ -8,8 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class UtilitiesTest {
 
-/*
-	
+	@Test
+	public void testUtilities() {
+		Utilities utilities = new Utilities();
+	}
+	/*
+
 	randomBewteen(x,y) Tests
 	
 	*/
@@ -124,6 +128,32 @@ class UtilitiesTest {
 		assertFalse(Utilities.isDate(str5));
 		assertTrue(Utilities.isDate(str6));
 		assertTrue(Utilities.isDate(str7));
+	}
+	
+	@Test
+	public void testIsNonNegative() {
+		String num1 = "-9";
+		String num2 = "-9.9";
+		String num3 = "-9.po";
+		String num4 = "-";
+		String num5 = "9.f";
+		String num6 = "9.";
+		String num7 = "9l";
+		String num8 = "9.9";
+		String num9 = "9";
+		String num10 = ".9";
+		
+		assertFalse(Utilities.isNonNegative(num1));
+		assertFalse(Utilities.isNonNegative(num2));
+		assertFalse(Utilities.isNonNegative(num3));
+		assertFalse(Utilities.isNonNegative(num4));
+		assertFalse(Utilities.isNonNegative(num5));
+		assertFalse(Utilities.isNonNegative(num6));
+		assertFalse(Utilities.isNonNegative(num7));
+		assertTrue(Utilities.isNonNegative(num8));
+		assertTrue(Utilities.isNonNegative(num9));
+		assertTrue(Utilities.isNonNegative(num10));
+		
 	}
 
 }

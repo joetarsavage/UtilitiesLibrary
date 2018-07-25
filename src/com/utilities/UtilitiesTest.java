@@ -75,5 +75,55 @@ class UtilitiesTest {
 		assertEquals(7,Utilities.wordCounter(str1));
 		assertEquals(3,Utilities.wordCounter(str2));
 	}
+	
+	@Test
+	public void testIsPhoneNumber(){
+		String str1 = "This is a test sentence for testing";
+		String str2 = "215-460-490";
+		String str3 = "215-460-49";
+		String str4 = "215-460-490p";
+		String str5 = "215-460-";
+		String str6 = "215-460-4908";
+		assertFalse(Utilities.isPhoneNumber(str1));
+		assertFalse(Utilities.isPhoneNumber(str2));
+		assertFalse(Utilities.isPhoneNumber(str3));
+		assertFalse(Utilities.isPhoneNumber(str4));
+		assertFalse(Utilities.isPhoneNumber(str5));
+		assertTrue(Utilities.isPhoneNumber(str6));
+	}
+	
+	@Test
+	public void testIsEmail(){
+		String str1 = "joey";
+		String str2 = "joey@";
+		String str3 = "joey@comcast";
+		String str4 = "joey@comcast.";
+		String str5 = "@comcast.net";
+		String str6 = "joey@comcast.net";
+		assertFalse(Utilities.isEmail(str1));
+		assertFalse(Utilities.isEmail(str2));
+		assertFalse(Utilities.isEmail(str3));
+		assertFalse(Utilities.isEmail(str4));
+		assertFalse(Utilities.isEmail(str5));
+		assertTrue(Utilities.isEmail(str6));
+	}
+	
+	@Test
+	public void testIsDate(){
+		String str1 = "This is a test sentence for testing";
+		String str2 = "10";
+		String str3 = "10/";
+		String str4 = "10/100";
+		String str5 = "10/fds10";
+		String str6 = "10/10/10";
+		String str7 = "10/10/10 12:00:00";
+		assertFalse(Utilities.isDate(str1));
+		assertFalse(Utilities.isDate(str2));
+		assertFalse(Utilities.isDate(str3));
+		assertFalse(Utilities.isDate(str4));
+		assertFalse(Utilities.isDate(str5));
+		assertTrue(Utilities.isDate(str6));
+		assertTrue(Utilities.isDate(str7));
+	}
 
 }

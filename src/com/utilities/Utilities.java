@@ -3,6 +3,7 @@ package com.utilities;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class Utilities {
 		//takes 2 numbers and returns a random number between them
@@ -43,5 +44,32 @@ public class Utilities {
 		
 		public static int wordCounter(String string){
 			return string.split(" ").length;
+		}
+		
+		public static boolean isPhoneNumber(String phoneNumber) {
+			
+			Pattern pattern = Pattern.compile("^[01]?[- .]?(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$", Pattern.CASE_INSENSITIVE);
+			if(pattern.matcher(phoneNumber).find()) {
+				return true;
+			}
+			return false;
+		}
+		
+		public static boolean isEmail(String email) {
+			Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+			if(pattern.matcher(email).find()) {
+				return true;
+			}
+			return false;
+		}
+		
+		@SuppressWarnings("deprecation")
+		public static boolean isDate(String date) {
+            try {
+            	Date.parse(date);
+            	return true;
+            }catch(Exception e){
+            	return false;
+            }
 		}
 }

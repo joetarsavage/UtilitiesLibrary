@@ -80,4 +80,9 @@ public class Utilities {
 			}
 			return false;
 		}
+		
+		public static boolean hasHttps(String url) {
+			return (url.startsWith("https://"));
+		}
+
 }

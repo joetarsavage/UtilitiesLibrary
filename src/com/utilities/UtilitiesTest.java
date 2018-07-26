@@ -11,6 +11,7 @@ class UtilitiesTest {
 	@Test
 	public void testUtilities() {
 		Utilities utilities = new Utilities();
+		utilities.toString();
 	}
 	/*
 
@@ -155,5 +156,17 @@ class UtilitiesTest {
 		assertTrue(Utilities.isNonNegative(num10));
 		
 	}
+	
+	@Test
+	public void testHasHttps() {
+		String url1 = "www.google.com";
+		String url2 = "http://www.google.com";
+		String url3 = "https://www.google.com";
+		
+		assertFalse(Utilities.hasHttps(url1));
+		assertFalse(Utilities.hasHttps(url2));
+		assertTrue(Utilities.hasHttps(url3));
+	}
+	
 
 }

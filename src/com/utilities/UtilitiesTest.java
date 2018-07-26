@@ -109,6 +109,21 @@ class UtilitiesTest {
 		assertFalse(Utilities.isEmail(str5));
 		assertTrue(Utilities.isEmail(str6));
 	}
+	@Test
+	public void testIsJnjEmail(){
+		String str1 = "joey";
+		String str2 = "joey@";
+		String str3 = "joey@its";
+		String str4 = "joey@its.jnj";
+		String str5 = "@its.jnj.com";
+		String str6 = "joey@its.jnj.com";
+		assertFalse(Utilities.isJnjEmail(str1));
+		assertFalse(Utilities.isJnjEmail(str2));
+		assertFalse(Utilities.isJnjEmail(str3));
+		assertFalse(Utilities.isJnjEmail(str4));
+		assertFalse(Utilities.isJnjEmail(str5));
+		assertTrue(Utilities.isJnjEmail(str6));
+	}
 	
 	@Test
 	public void testIsDate(){

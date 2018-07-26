@@ -23,24 +23,21 @@ class UtilitiesTest {
 	public void testXGreaterYRandomBewteen() {
 		int x = 2, y = 10;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x <= randomNumber && y >= randomNumber);
-		assertTrue(bool);
+		assertTrue(x <= randomNumber && y >= randomNumber);
 	}
 	//Tests randomBewteen(x,y) when x is less than y
 	@Test
 	public void testXLessYRandomBetween(){
 		int x = 10, y = 2;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x >= randomNumber && y <= randomNumber);
-		assertTrue(bool);
+		assertTrue(x >= randomNumber && y <= randomNumber);
 	}
 	//Tests randomBewteen(x,y) when x is equal to y
 	@Test
 	public void testXEqualYRandomBewteen(){
 		int x = 10, y = 10;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x == randomNumber);
-		assertTrue(bool);
+		assertTrue(x == randomNumber);
 	}
 	
 	/*

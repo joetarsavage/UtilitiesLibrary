@@ -1,6 +1,12 @@
 package com.utilities;
 
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -13,9 +19,9 @@ public class Utilities {
 	public static int randomBewteen(int x, int y){
 		Random rand = new Random();
 		if(x>y){
-			return rand.nextInt(x-y) + y;
+			return rand.nextInt(x - y + 1) + y;
 		}else if(x<y){
-			return rand.nextInt(y-x) + x;
+			return rand.nextInt(y - x + 1) + x;
 		}else{
 			return x;
 		}
@@ -115,4 +121,46 @@ public class Utilities {
 		return (url.startsWith("https://"));
 	}
 
+	public static boolean writeToFile(String fileName, String toWrite){
+		File file; 
+		try {
+			file = new File (fileName);
+			file.createNewFile();
+		}catch(Exception exception){
+			return false;
+		}
+		BufferedWriter out;
+		try {
+			out = new BufferedWriter(new FileWriter(file));
+			out.write(toWrite);
+		  	out.close();
+		  	return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} 
+	}
+	
+	public static String readFromFile(String fileName){
+		File file; 
+		try {
+			file = new File (fileName);
+			file.createNewFile();
+		}catch(Exception exception){
+			return "";
+		}
+		BufferedReader in;
+		try {
+			in = new BufferedReader(new FileReader(file));
+			String str = in.readLine();
+			in.close();
+			return str;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		} 
+	}
+	
 }

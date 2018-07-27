@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class UtilitiesTest {
@@ -21,7 +22,7 @@ class UtilitiesTest {
 	//Tests rrandomBewteen(x,y) when x is greater than y
 	@Test
 	public void testXGreaterYRandomBewteen() {
-		int x = 2, y = 10;
+		int x = 2, y = 3;
 		int randomNumber = Utilities.randomBewteen(x, y);
 		assertTrue(x <= randomNumber && y >= randomNumber);
 	}
@@ -116,13 +117,15 @@ class UtilitiesTest {
 		String str3 = "joey@its";
 		String str4 = "joey@its.jnj";
 		String str5 = "@its.jnj.com";
-		String str6 = "joey@its.jnj.com";
+		String str6 = "joey@comcast.net";
+		String str7 = "joey@its.jnj.com";
 		assertFalse(Utilities.isJnjEmail(str1));
 		assertFalse(Utilities.isJnjEmail(str2));
 		assertFalse(Utilities.isJnjEmail(str3));
 		assertFalse(Utilities.isJnjEmail(str4));
 		assertFalse(Utilities.isJnjEmail(str5));
-		assertTrue(Utilities.isJnjEmail(str6));
+		assertFalse(Utilities.isJnjEmail(str6));
+		assertTrue(Utilities.isJnjEmail(str7));
 	}
 	
 	@Test
@@ -180,5 +183,21 @@ class UtilitiesTest {
 		assertTrue(Utilities.hasHttps(url3));
 	}
 	
-
+	@Ignore
+	public void testWriteToFile_Success() {
+		String path = "/Users/jtarsavage/";
+		String fileName = "score.txt";
+		String toWrite = "Hello there!";
+		
+		assertTrue(Utilities.writeToFile(path+fileName, toWrite));
+	}
+	
+	@Ignore
+	public void testWriteToFile_Failure() {
+		String path = "/Users/jtarsavage/HighScores/";
+		String fileName = "score.txt";
+		String toWrite = "Hello there!";
+		
+		assertFalse(Utilities.writeToFile(path+fileName, toWrite));
+	}
 }

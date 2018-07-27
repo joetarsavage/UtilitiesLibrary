@@ -4,38 +4,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class UtilitiesTest {
 
-/*
-	
+	@Test
+	public void testUtilities() {
+		Utilities utilities = new Utilities();
+		utilities.toString();
+	}
+	/*
+
 	randomBewteen(x,y) Tests
 	
 	*/
 	//Tests rrandomBewteen(x,y) when x is greater than y
 	@Test
 	public void testXGreaterYRandomBewteen() {
-		int x = 2, y = 10;
+		int x = 2, y = 3;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x <= randomNumber && y >= randomNumber);
-		assertTrue(bool);
+		assertTrue(x <= randomNumber && y >= randomNumber);
 	}
 	//Tests randomBewteen(x,y) when x is less than y
 	@Test
 	public void testXLessYRandomBetween(){
 		int x = 10, y = 2;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x >= randomNumber && y <= randomNumber);
-		assertTrue(bool);
+		assertTrue(x >= randomNumber && y <= randomNumber);
 	}
 	//Tests randomBewteen(x,y) when x is equal to y
 	@Test
 	public void testXEqualYRandomBewteen(){
 		int x = 10, y = 10;
 		int randomNumber = Utilities.randomBewteen(x, y);
-		boolean bool = (x == randomNumber);
-		assertTrue(bool);
+		assertTrue(x == randomNumber);
 	}
 	
 	/*
@@ -107,6 +110,23 @@ class UtilitiesTest {
 		assertFalse(Utilities.isEmail(str5));
 		assertTrue(Utilities.isEmail(str6));
 	}
+	@Test
+	public void testIsJnjEmail(){
+		String str1 = "joey";
+		String str2 = "joey@";
+		String str3 = "joey@its";
+		String str4 = "joey@its.jnj";
+		String str5 = "@its.jnj.com";
+		String str6 = "joey@comcast.net";
+		String str7 = "joey@its.jnj.com";
+		assertFalse(Utilities.isJnjEmail(str1));
+		assertFalse(Utilities.isJnjEmail(str2));
+		assertFalse(Utilities.isJnjEmail(str3));
+		assertFalse(Utilities.isJnjEmail(str4));
+		assertFalse(Utilities.isJnjEmail(str5));
+		assertFalse(Utilities.isJnjEmail(str6));
+		assertTrue(Utilities.isJnjEmail(str7));
+	}
 	
 	@Test
 	public void testIsDate(){
@@ -125,5 +145,59 @@ class UtilitiesTest {
 		assertTrue(Utilities.isDate(str6));
 		assertTrue(Utilities.isDate(str7));
 	}
-
+	
+	@Test
+	public void testIsNonNegative() {
+		String num1 = "-9";
+		String num2 = "-9.9";
+		String num3 = "-9.po";
+		String num4 = "-";
+		String num5 = "9.f";
+		String num6 = "9.";
+		String num7 = "9l";
+		String num8 = "9.9";
+		String num9 = "9";
+		String num10 = ".9";
+		
+		assertFalse(Utilities.isNonNegative(num1));
+		assertFalse(Utilities.isNonNegative(num2));
+		assertFalse(Utilities.isNonNegative(num3));
+		assertFalse(Utilities.isNonNegative(num4));
+		assertFalse(Utilities.isNonNegative(num5));
+		assertFalse(Utilities.isNonNegative(num6));
+		assertFalse(Utilities.isNonNegative(num7));
+		assertTrue(Utilities.isNonNegative(num8));
+		assertTrue(Utilities.isNonNegative(num9));
+		assertTrue(Utilities.isNonNegative(num10));
+		
+	}
+	
+	@Test
+	public void testHasHttps() {
+		String url1 = "www.google.com";
+		String url2 = "http://www.google.com";
+		String url3 = "https://www.google.com";
+		
+		assertFalse(Utilities.hasHttps(url1));
+		assertFalse(Utilities.hasHttps(url2));
+		assertTrue(Utilities.hasHttps(url3));
+	}
+	
+	@Ignore
+	public void testWriteToFile_Success() {
+		String path = "/Users/jtarsavage/";
+		String fileName = "score.txt";
+		String toWrite = "Hello there!";
+		
+		assertTrue(Utilities.writeToFile(path+fileName, toWrite));
+	}
+	
+	@Ignore
+	public void testWriteToFile_Failure() {
+		String path = "/Users/jtarsavage/HighScores/";
+		String fileName = "score.txt";
+		String toWrite = "Hello there!";
+		
+		assertFalse(Utilities.writeToFile(path+fileName, toWrite));
+	}
 }

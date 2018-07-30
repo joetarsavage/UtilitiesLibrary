@@ -141,7 +141,7 @@ public class Utilities {
 		return (url.startsWith("https://"));
 	}
 
-	public static boolean writeToFile(String fileName, String toWrite){
+	public static boolean writeToFile(String fileName, String toWrite) throws IOException{
 		File file; 
 		try {
 			file = new File (fileName);
@@ -150,19 +150,14 @@ public class Utilities {
 			return false;
 		}
 		BufferedWriter out;
-		try {
-			out = new BufferedWriter(new FileWriter(file));
-			out.write(toWrite);
-		  	out.close();
-		  	return true;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		} 
+		
+		out = new BufferedWriter(new FileWriter(file));
+		out.write(toWrite);
+	  	out.close();
+	  	return true;
 	}
 	
-	public static String readFromFile(String fileName){
+	public static String readFromFile(String fileName) throws IOException{
 		File file; 
 		try {
 			file = new File (fileName);
@@ -171,16 +166,12 @@ public class Utilities {
 			return "";
 		}
 		BufferedReader in;
-		try {
-			in = new BufferedReader(new FileReader(file));
-			String str = in.readLine();
-			in.close();
-			return str;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "";
-		} 
+		
+		in = new BufferedReader(new FileReader(file));
+		String str = in.readLine();
+		in.close();
+		return str;
+
 	}
 	
 		

@@ -2,6 +2,7 @@ package com.utilities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -204,7 +205,7 @@ class UtilitiesTest {
 	}
 	
 	@Test
-	public void testWriteToFile_Success() {
+	public void testWriteToFile_Success() throws IOException {
 		String path = "/Users/jtarsavage/";
 		String fileName = "scoreTest.txt";
 		String toWrite = "Hello there!";
@@ -213,7 +214,7 @@ class UtilitiesTest {
 	}
 	
 	@Test
-	public void testWriteToFile_Failure() {
+	public void testWriteToFile_Failure() throws IOException {
 		String path = "/Users/jtarsavage/HighScores/";
 		String fileName = "scoreTest.txt";
 		String toWrite = "Hello there!";
@@ -222,7 +223,7 @@ class UtilitiesTest {
 	}
 	
 	@Test
-	public void testReadFromFile_Success() {
+	public void testReadFromFile_Success() throws IOException {
 		String path = "/Users/jtarsavage/";
 		String fileName = "scoreTest.txt";
 		String toRead = "Hello there!";
@@ -231,7 +232,7 @@ class UtilitiesTest {
 	}
 	
 	@Test
-	public void testReadFromFile_Failure() {
+	public void testReadFromFile_Failure() throws IOException {
 		String path = "/Users/jtarsavage/HighScores/";
 		String fileName = "scoreTest.txt";
 		String toRead = "Hello there!";

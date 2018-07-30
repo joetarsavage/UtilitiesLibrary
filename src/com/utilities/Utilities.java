@@ -60,7 +60,7 @@ public class Utilities {
 	//uses regex to determine if string is a valid phone number
 	//returns true if yes
 	public static boolean isPhoneNumber(String phoneNumber) {	
-		Pattern pattern = Pattern.compile("^[01]?[- .]?(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$", Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^[01]?[- .]?(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$");
 		if(pattern.matcher(phoneNumber).find()) {
 			return true;
 		}
@@ -113,6 +113,26 @@ public class Utilities {
 		}
 		return false;
 	}
+	
+	public static boolean isSecurePassword(String password) {
+		/*
+			^                         Start anchor
+			(?=.*[A-Z].*[A-Z])        Ensure string has two upper case letters.
+			(?=.*[!@#$&*])            Ensure string has one special case letter.
+			(?=.*[0-9].*[0-9])        Ensure string has two digits.
+			(?=.*[a-z].*[a-z].*[a-z]) Ensure string has three lower case letters.
+			.{8,24}                   Ensure string is of length 8 but less than 24.
+			$                         End anchor. 
+		*/
+		
+		Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,24}$");
+		if(pattern.matcher(password).find()) {
+			return true;
+		}
+		return false;
+		
+	}
+
 
 	//takes string argument
 	//determines if given url has https at the beginning
@@ -163,4 +183,5 @@ public class Utilities {
 		} 
 	}
 	
+		
 }

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class UtilitiesTest {
@@ -170,6 +169,27 @@ class UtilitiesTest {
 		assertTrue(Utilities.isNonNegative(num9));
 		assertTrue(Utilities.isNonNegative(num10));
 		
+	}
+	
+	@Test
+	public void testIsSecurePassoword() {
+		String pass1 = "";
+		String pass2 = "password";
+		String pass3 = "Password";
+		String pass4 = "password1";
+		String pass5 = "Password1";
+		String pass6 = "#password1";
+		String pass7 = "#Password";
+		String pass8 = "#Password1";
+
+		assertFalse(Utilities.isSecurePassword(pass1));
+		assertFalse(Utilities.isSecurePassword(pass2));
+		assertFalse(Utilities.isSecurePassword(pass3));
+		assertFalse(Utilities.isSecurePassword(pass4));
+		assertFalse(Utilities.isSecurePassword(pass5));
+		assertFalse(Utilities.isSecurePassword(pass6));
+		assertFalse(Utilities.isSecurePassword(pass7));
+		assertTrue(Utilities.isSecurePassword(pass8));
 	}
 	
 	@Test

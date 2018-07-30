@@ -183,21 +183,39 @@ class UtilitiesTest {
 		assertTrue(Utilities.hasHttps(url3));
 	}
 	
-	@Ignore
+	@Test
 	public void testWriteToFile_Success() {
 		String path = "/Users/jtarsavage/";
-		String fileName = "score.txt";
+		String fileName = "scoreTest.txt";
 		String toWrite = "Hello there!";
 		
 		assertTrue(Utilities.writeToFile(path+fileName, toWrite));
 	}
 	
-	@Ignore
+	@Test
 	public void testWriteToFile_Failure() {
 		String path = "/Users/jtarsavage/HighScores/";
-		String fileName = "score.txt";
+		String fileName = "scoreTest.txt";
 		String toWrite = "Hello there!";
 		
 		assertFalse(Utilities.writeToFile(path+fileName, toWrite));
+	}
+	
+	@Test
+	public void testReadFromFile_Success() {
+		String path = "/Users/jtarsavage/";
+		String fileName = "scoreTest.txt";
+		String toRead = "Hello there!";
+		
+		assertEquals(toRead, Utilities.readFromFile(path+fileName));
+	}
+	
+	@Test
+	public void testReadFromFile_Failure() {
+		String path = "/Users/jtarsavage/HighScores/";
+		String fileName = "scoreTest.txt";
+		String toRead = "Hello there!";
+		
+		assertNotEquals(toRead, Utilities.readFromFile(path+fileName));
 	}
 }
